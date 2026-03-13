@@ -1,4 +1,5 @@
 import { BRAND_COLORS } from "@/lib/constants";
+import { PlaidLink } from "@/components/plaid-link";
 
 const cards = [
   { label: "Spending",    value: "—", color: BRAND_COLORS.lavender, oklch: "0.82 0.09 293" },
@@ -34,6 +35,11 @@ export default function DashboardPage() {
             <p className="text-2xl font-bold" style={{ color }}>{value}</p>
           </div>
         ))}
+      </div>
+
+      <div>
+        <h3 className="text-xs tracking-widest uppercase text-muted-foreground mb-3">Connect Account</h3>
+        <PlaidLink />
       </div>
     </div>
   );
