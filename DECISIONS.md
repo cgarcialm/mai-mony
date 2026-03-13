@@ -58,30 +58,37 @@ Each feature is a branch (`feature/<name>`) merged to `main` via PR.
 - [x] Supabase project setup + client lib (`lib/supabase.ts`)
 - [x] Vercel deploy + env vars configured
 
-### Feature 2 — Database Schema (branch: `feature/db-schema`)
+### Feature 2 — Plaid Sandbox (branch: `feature/plaid-sandbox`)
+Connect a sandbox account first to see exactly what data Plaid returns before designing the schema.
+- [ ] Plaid client (`lib/plaid.ts`)
+- [ ] `/api/plaid/create-link-token` + `/api/plaid/exchange-token`
+- [ ] Plaid Link UI flow (sandbox test account)
+- [ ] Inspect raw data: transactions, accounts, holdings
+- [ ] Document data shape to inform schema design
+
+### Feature 3 — Database Schema (branch: `feature/db-schema`)
+Designed based on actual Plaid data shape from Feature 2.
 - [ ] Supabase migration: `accounts`, `transactions`, `holdings`, `budgets`, `notifications`
 - [ ] Types generated from Supabase schema (`types/database.ts`)
 
-### Feature 3 — Plaid Integration (branch: `feature/plaid`)
-- [ ] Plaid client (`lib/plaid.ts`)
-- [ ] `/api/plaid/create-link-token` + `/api/plaid/exchange-token`
-- [ ] Plaid Link UI flow (connect Chase CC)
-- [ ] Plaid Link UI flow (connect Schwab brokerage)
+### Feature 4 — Plaid Production (branch: `feature/plaid-prod`)
+- [ ] Connect real Chase CC account
+- [ ] Connect real Schwab brokerage account
 - [ ] `/api/plaid/webhook` — sync transactions + holdings to Supabase
 - [ ] `/api/cron/daily-sync` — fallback full sync
 
-### Feature 4 — Dashboard + Transactions (branch: `feature/dashboard`)
+### Feature 5 — Dashboard + Transactions (branch: `feature/dashboard`)
 - [ ] Spending by month/category/merchant charts
 - [ ] Transaction list with search + category filter
 
-### Feature 5 — Investments (branch: `feature/investments`)
+### Feature 6 — Investments (branch: `feature/investments`)
 - [ ] Schwab portfolio snapshot (ESPP, RSU, holdings, values)
 
-### Feature 6 — Budgets + Alerts (branch: `feature/budgets`)
+### Feature 7 — Budgets + Alerts (branch: `feature/budgets`)
 - [ ] Category budget thresholds
 - [ ] Resend email alerts on threshold breach
 - [ ] In-app notification center
 
-### Feature 7 — AI Analysis (branch: `feature/ai-analysis`)
+### Feature 8 — AI Analysis (branch: `feature/ai-analysis`)
 - [ ] `/api/analyze` — Claude API call with transaction + holdings context
 - [ ] "Analyze my finances" button + inline response on dashboard
