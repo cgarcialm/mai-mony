@@ -49,14 +49,14 @@ Included in design system but low priority.
 
 Each feature is a branch (`feature/<name>`) merged to `main` via PR.
 
-### Feature 1 — Scaffold (branch: `feature/scaffold`)
-- [ ] Init Next.js 14 project (TypeScript, Tailwind, App Router, ESLint)
-- [ ] Install + configure shadcn/ui
-- [ ] Apply pastel-neon + matrix theme (CSS variables, custom Tailwind config)
-- [ ] Implement single-user auth (middleware.ts + login page + httpOnly cookie)
-- [ ] Basic app shell layout (sidebar nav, header)
-- [ ] Supabase project setup + client lib (`lib/supabase.ts`)
-- [ ] Vercel deploy + env vars configured
+### Feature 1 — Scaffold ✅ (branch: `feature/scaffold`)
+- [x] Init Next.js 14 project (TypeScript, Tailwind, App Router, ESLint)
+- [x] Install + configure shadcn/ui
+- [x] Apply pastel-neon + matrix theme (CSS variables, custom Tailwind config)
+- [x] Implement single-user auth (middleware.ts + login page + httpOnly cookie)
+- [x] Basic app shell layout (sidebar nav, header)
+- [x] Supabase project setup + client lib (`lib/supabase.ts`)
+- [x] Vercel deploy + env vars configured
 
 ### Feature 2 — Database Schema (branch: `feature/db-schema`)
 - [ ] Supabase migration: `accounts`, `transactions`, `holdings`, `budgets`, `notifications`
