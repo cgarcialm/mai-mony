@@ -19,11 +19,28 @@ Personal finance tracking app. Single-user. Tracks spending (Chase CC) and inves
 
 Pastel neon on dark: lavender `#C4B5FD`, light green `#86EFAC`, light blue `#7DD3FC`. Matrix/futuristic accents — monospace fonts, subtle scanlines, dark background.
 
+## Required Accounts
+
+You need accounts on all of these before the app is fully functional:
+
+| Service | Purpose | URL | Free tier |
+|---|---|---|---|
+| **Supabase** | PostgreSQL database | supabase.com | Yes |
+| **Plaid** | Bank + investment data | dashboard.plaid.com | Sandbox free, dev requires approval |
+| **Vercel** | Hosting + cron jobs | vercel.com | Yes (Hobby) |
+| **Resend** | Email alerts | resend.com | Yes (3k/mo) |
+| **Anthropic** | Claude AI analysis | console.anthropic.com | Pay per use |
+
+### Plaid setup notes
+- Start with **sandbox** (free, instant, test data)
+- To connect real accounts (Chase CC, Schwab) you need **development** mode — request access from the Plaid dashboard
+- Sandbox credentials: username `user_good`, password `pass_good`
+
 ## Getting Started
 
 ```bash
 npm install
-cp .env.example .env.local   # fill in env vars
+cp .env.example .env.local   # fill in env vars (see Required Accounts above)
 npm run dev
 ```
 
