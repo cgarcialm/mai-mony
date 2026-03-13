@@ -51,9 +51,6 @@
     /* pastel yellow */
     --yellow:              oklch(0.92 0.08 95);
 
-    /* pastel yellow */
-    --yellow:              oklch(0.92 0.08 95);
-
     /* charts */
     --chart-1:             oklch(0.82 0.09 293);
     --chart-2:             oklch(0.90 0.09 155);
@@ -164,5 +161,21 @@
   }
   .text-glow-green {
     text-shadow: 0 0 8px oklch(0.871 0.148 155 / 70%);
+  }
+
+  /* Nav item hover — color driven by --nav-color CSS var set inline */
+  .nav-item:hover {
+    color: var(--nav-color);
+  }
+
+  /* Stat card hover — driven by --c (oklch coords) CSS var set inline */
+  .stat-card {
+    transition: all 0.2s;
+  }
+  .stat-card:hover {
+    background-color: oklch(var(--c) / 28%);
+    border-color: oklch(var(--c) / 55%);
+    box-shadow: 0 0 16px oklch(var(--c) / 25%);
+    transform: translateY(-1px);
   }
 }

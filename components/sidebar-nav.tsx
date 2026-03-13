@@ -2,14 +2,14 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { BRAND_COLORS } from "@/lib/constants";
 
 const navItems = [
-  { href: "/", label: "Dashboard", color: "#C4B5FD" },
-  { href: "/transactions", label: "Transactions", color: "#7DD3FC" },
-  { href: "/investments", label: "Investments", color: "#86EFAC" },
-  { href: "/budgets", label: "Budgets", color: "#FEF08A" },
-  { href: "/analyze", label: "AI Analysis", color: "#C4B5FD" },
+  { href: "/",             label: "Dashboard",   color: BRAND_COLORS.lavender },
+  { href: "/transactions", label: "Transactions", color: BRAND_COLORS.blue },
+  { href: "/investments",  label: "Investments",  color: BRAND_COLORS.green },
+  { href: "/budgets",      label: "Budgets",      color: BRAND_COLORS.yellow },
+  { href: "/analyze",      label: "AI Analysis",  color: BRAND_COLORS.lavender },
 ];
 
 export function SidebarNav() {
@@ -30,7 +30,17 @@ export function SidebarNav() {
         {navItems.map(({ href, label, color }) => {
           const active = pathname === href;
           return (
-            <NavItem key={href} href={href} label={label} color={color} active={active} />
+            <Link
+              key={href}
+              href={href}
+              className="nav-item block px-3 py-2 rounded text-xs tracking-widest uppercase transition hover:bg-muted text-muted-foreground"
+              style={{
+                "--nav-color": color,
+                ...(active ? { color } : {}),
+              } as React.CSSProperties}
+            >
+              {label}
+            </Link>
           );
         })}
       </nav>
@@ -40,24 +50,6 @@ export function SidebarNav() {
         <SignOutButton />
       </div>
     </aside>
-  );
-}
-
-function NavItem({ href, label, color, active }: { href: string; label: string; color: string; active: boolean }) {
-  const [hovered, setHovered] = useState(false);
-
-  return (
-    <Link
-      href={href}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      className="block px-3 py-2 rounded text-xs tracking-widest uppercase transition hover:bg-muted"
-      style={{ color: active || hovered ? color : undefined }}
-    >
-      <span className={active || hovered ? undefined : "text-muted-foreground"}>
-        {label}
-      </span>
-    </Link>
   );
 }
 

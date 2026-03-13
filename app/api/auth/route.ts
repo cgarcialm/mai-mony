@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
+import { AUTH_COOKIE } from "@/lib/constants";
 
-const AUTH_COOKIE = "mm_auth";
 const COOKIE_MAX_AGE = 60 * 60 * 24 * 30; // 30 days
 
 export async function POST(request: NextRequest) {
