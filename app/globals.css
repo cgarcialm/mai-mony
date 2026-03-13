@@ -1,0 +1,181 @@
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer base {
+  /* Mai Mony — pastel-neon matrix theme (always dark) */
+  :root {
+    /* pastel lavender  #C4B5FD → oklch(0.82 0.09 293) */
+    /* pastel green     #86EFAC → oklch(0.90 0.09 155) */
+    /* pastel blue      #7DD3FC → oklch(0.87 0.06 215) */
+
+    --background:          oklch(0.09 0.008 260);
+    --foreground:          oklch(0.93 0.015 270);
+
+    --card:                oklch(0.13 0.010 260);
+    --card-foreground:     oklch(0.93 0.015 270);
+
+    --popover:             oklch(0.13 0.010 260);
+    --popover-foreground:  oklch(0.93 0.015 270);
+
+    /* primary = pastel lavender */
+    --primary:             oklch(0.82 0.09 293);
+    --primary-foreground:  oklch(0.09 0.008 260);
+
+    /* secondary = pastel green */
+    --secondary:           oklch(0.90 0.09 155);
+    --secondary-foreground: oklch(0.09 0.008 260);
+
+    --muted:               oklch(0.17 0.008 260);
+    --muted-foreground:    oklch(0.55 0.015 270);
+
+    /* accent = pastel blue */
+    --accent:              oklch(0.87 0.06 215);
+    --accent-foreground:   oklch(0.09 0.008 260);
+
+    --destructive:         oklch(0.70 0.15 25);
+    --destructive-foreground: oklch(0.98 0 0);
+
+    --border:              oklch(0.82 0.09 293 / 18%);
+    --input:               oklch(0.82 0.09 293 / 12%);
+    --ring:                oklch(0.82 0.09 293 / 50%);
+
+    /* pastel yellow */
+    --yellow:              oklch(0.92 0.08 95);
+
+    /* charts */
+    --chart-1:             oklch(0.82 0.09 293);
+    --chart-2:             oklch(0.90 0.09 155);
+    --chart-3:             oklch(0.87 0.06 215);
+    --chart-4:             oklch(0.92 0.08 95);
+    --chart-5:             oklch(0.84 0.09 330);
+
+    --radius: 0.5rem;
+
+    /* sidebar */
+    --sidebar:             oklch(0.11 0.010 260);
+    --sidebar-foreground:  oklch(0.93 0.015 270);
+    --sidebar-primary:     oklch(0.82 0.09 293);
+    --sidebar-primary-foreground: oklch(0.09 0.008 260);
+    --sidebar-accent:      oklch(0.90 0.09 155);
+    --sidebar-accent-foreground: oklch(0.09 0.008 260);
+    --sidebar-border:      oklch(0.82 0.09 293 / 12%);
+    --sidebar-ring:        oklch(0.82 0.09 293 / 40%);
+  }
+
+  /* Dark class mirrors :root — app is always dark */
+  .dark {
+    --background:          oklch(0.09 0.008 260);
+    --foreground:          oklch(0.93 0.015 270);
+    --card:                oklch(0.13 0.010 260);
+    --card-foreground:     oklch(0.93 0.015 270);
+    --popover:             oklch(0.13 0.010 260);
+    --popover-foreground:  oklch(0.93 0.015 270);
+    --primary:             oklch(0.82 0.09 293);
+    --primary-foreground:  oklch(0.09 0.008 260);
+    --secondary:           oklch(0.90 0.09 155);
+    --secondary-foreground: oklch(0.09 0.008 260);
+    --muted:               oklch(0.17 0.008 260);
+    --muted-foreground:    oklch(0.55 0.015 270);
+    --accent:              oklch(0.87 0.06 215);
+    --accent-foreground:   oklch(0.09 0.008 260);
+    --destructive:         oklch(0.70 0.15 25);
+    --destructive-foreground: oklch(0.98 0 0);
+    --border:              oklch(0.82 0.09 293 / 18%);
+    --input:               oklch(0.82 0.09 293 / 12%);
+    --ring:                oklch(0.82 0.09 293 / 50%);
+    --yellow:              oklch(0.92 0.08 95);
+    --chart-1:             oklch(0.82 0.09 293);
+    --chart-2:             oklch(0.90 0.09 155);
+    --chart-3:             oklch(0.87 0.06 215);
+    --chart-4:             oklch(0.92 0.08 95);
+    --chart-5:             oklch(0.84 0.09 330);
+    --sidebar:             oklch(0.11 0.010 260);
+    --sidebar-foreground:  oklch(0.93 0.015 270);
+    --sidebar-primary:     oklch(0.82 0.09 293);
+    --sidebar-primary-foreground: oklch(0.09 0.008 260);
+    --sidebar-accent:      oklch(0.90 0.09 155);
+    --sidebar-accent-foreground: oklch(0.09 0.008 260);
+    --sidebar-border:      oklch(0.82 0.09 293 / 12%);
+    --sidebar-ring:        oklch(0.82 0.09 293 / 40%);
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-geist-mono), "JetBrains Mono", "Fira Code", monospace;
+  }
+
+  html {
+    @apply font-mono;
+    color-scheme: dark;
+  }
+}
+
+/* Scanline overlay — subtle matrix effect */
+@layer utilities {
+  .scanlines {
+    position: relative;
+  }
+  .scanlines::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      oklch(0 0 0 / 4%) 2px,
+      oklch(0 0 0 / 4%) 4px
+    );
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* Neon glow utilities */
+  .glow-lavender {
+    box-shadow: 0 0 8px oklch(0.740 0.148 293 / 50%),
+                0 0 20px oklch(0.740 0.148 293 / 20%);
+  }
+  .glow-green {
+    box-shadow: 0 0 8px oklch(0.871 0.148 155 / 50%),
+                0 0 20px oklch(0.871 0.148 155 / 20%);
+  }
+  .glow-blue {
+    box-shadow: 0 0 8px oklch(0.822 0.099 215 / 50%),
+                0 0 20px oklch(0.822 0.099 215 / 20%);
+  }
+  .text-glow-lavender {
+    text-shadow: 0 0 8px oklch(0.740 0.148 293 / 70%);
+  }
+  .text-glow-green {
+    text-shadow: 0 0 8px oklch(0.871 0.148 155 / 70%);
+  }
+
+  /* Nav item hover — color driven by --nav-color CSS var set inline */
+  .nav-item:hover {
+    color: var(--nav-color);
+  }
+
+  /* Stat card hover — driven by --c (oklch coords) CSS var set inline */
+  .stat-card {
+    transition: all 0.2s;
+  }
+  .stat-card:hover {
+    background-color: oklch(var(--c) / 28%);
+    border-color: oklch(var(--c) / 55%);
+    box-shadow: 0 0 16px oklch(var(--c) / 25%);
+    transform: translateY(-1px);
+  }
+}
